@@ -4,8 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/system/Main.java</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/models/Usuario.java</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/models/Persona.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/views/loginView.fxml</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/controllers/NewUserController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/controllers/LoginController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/views/NewUserView.fxml</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/Cursos/Bases%20de%20datos/projects/Auth/src/org/pablogonzalez/dao/Conexion.java</file>
         </group>
     </open-files>
 </project-private>
