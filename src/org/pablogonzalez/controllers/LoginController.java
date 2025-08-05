@@ -24,6 +24,8 @@ import org.pablogonzalez.system.Main;
 
 public class LoginController implements Initializable{
     private Main escenarioPrincipal;
+    Usuario usuario = new Usuario();
+
     
     @FXML
     private TextField txtEmail;
@@ -35,7 +37,7 @@ public class LoginController implements Initializable{
     private Button btnAceptar, btnCancelar;
     
     @FXML
-    private Label lblRegistrarse;
+    private Label lblRegistrarse, lblRecuperarContraseña;
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -61,7 +63,6 @@ public class LoginController implements Initializable{
     }
     
     private void buscarUsuario(){
-        Usuario usuario = new Usuario();
         Connection conexion = Conexion.getInstance().getConexion();
         if(conexion == null){
             mostrarAlerta(Alert.AlertType.ERROR,
@@ -69,20 +70,39 @@ public class LoginController implements Initializable{
                     "Error de conecion",
                     "No fue posible conectarse a la DB, revisa configuraciones");
         }
-        String query = "call sp_buscar_usuario(?,?)";
+        String query = "call sp_validar_usuario(?,?)";
         try(PreparedStatement sp = conexion.prepareStatement(query)){
             sp.setString(1, txtEmail.getText());
             sp.setString(2, txtPassword.getText());
             ResultSet resultado = sp.executeQuery();
             
             if(resultado.next()){
-                usuario.setEmail(resultado.getString("email"));
-                mostrarAlerta(Alert.AlertType.INFORMATION,
-                        "Bienvenido !!!",
-                        "Inicio de sesion exitoso",
-                        "Todo esta bien, bienvenido al programa");
+                String respuesta = resultado.getString("resultado");
+                
+                switch(respuesta){
+                    case "NO_EMAIL" -> mostrarAlerta(Alert.AlertType.ERROR,
+                            "Login",
+                            "Fallo inicio de sesion",
+                            "No es un correo valido");
+                    case "CONTRASENIA_INCORRECTA" -> mostrarAlerta(Alert.AlertType.ERROR,
+                            "Login",
+                            "Fallo inicio de sesion",
+                            "Contraseña incorrecta");
+                    case "OK" -> {
+                        String email = resultado.getString("email");
+                        usuario.setEmail(email);
+                        mostrarAlerta(Alert.AlertType.INFORMATION,
+                            "Bienvenido !!!",
+                            "Inicio de sesion exitoso",
+                            "Todo esta bien, bienvenido al programa " + usuario.getEmail());
+                    }
+                    default -> mostrarAlerta(Alert.AlertType.ERROR,
+                            "Login",
+                            "Fallo inicio se sesion",
+                            "Respuesta inesperada al server");
+                }
             }else{
-                mostrarAlerta(Alert.AlertType.INFORMATION,
+                mostrarAlerta(Alert.AlertType.ERROR,
                         "Login",
                         "Fallo inicio de sesion",
                         "Email o password incorrectos, intenta de nuevo");
@@ -114,6 +134,18 @@ public class LoginController implements Initializable{
                     "Nuevo Usuario",
                     "Error en formulario de registro",
                     "No fue posible mostrar el formulario de registro de usuarios");
+        }
+    }
+    
+    @FXML
+    public void eventoRecuperarContraseña(MouseEvent evento){
+        if(escenarioPrincipal != null){
+            escenarioPrincipal.recuperarContraseña();
+        }else{
+            mostrarAlerta(Alert.AlertType.ERROR,
+                    "Recuperar Contraseña",
+                    "Error en el formulario de registro",
+                    "No fue posible mostrar el formulario de recuperación de contraseña");
         }
     }
     

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="388.0" prefWidth="626.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.pablogonzalez.controllers.LoginController">
+<AnchorPane prefHeight="388.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pablogonzalez.controllers.LoginController">
    <children>
       <Label layoutX="193.0" layoutY="20.0" text="BIENVENIDO" textFill="#511ada">
          <font>
@@ -43,6 +42,11 @@
          </font>
       </Button>
       <Label fx:id="lblRegistrarse" layoutX="508.0" layoutY="334.0" onMouseClicked="#eventoRegistrarse" text="Registrarse" textFill="#157feb">
+         <font>
+            <Font name="Arial Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRecuperarContraseña" layoutX="43.0" layoutY="334.0" onMouseClicked="#eventoRecuperarContraseña" text="¿Recuperar Contraseña?" textFill="#157feb">
          <font>
             <Font name="Arial Italic" size="18.0" />
          </font>
