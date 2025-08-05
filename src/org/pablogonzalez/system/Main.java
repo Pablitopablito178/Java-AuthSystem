@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.pablogonzalez.controllers.LoginController;
 import org.pablogonzalez.controllers.NewUserController;
+import org.pablogonzalez.controllers.RecuperarContraseñaController;
 
 public class Main extends Application{
     private final String PAQUETE_VISTA = "/org/pablogonzalez/views/";
@@ -63,6 +64,17 @@ public class Main extends Application{
             System.out.println("Intentando cargar el archivo FXML...");
             NewUserController newUser = (NewUserController) cambiarEscena("NewUserView.fxml",443,470);
             newUser.setEscenarioPrincipal(this);
+        }catch(Exception error){
+            System.out.println("Ocurrio un error");
+            error.printStackTrace();
+        }
+    }
+    
+    public void recuperarContraseña(){
+        try{
+            System.out.println("Intentando cargar el archivo FXML...");
+            RecuperarContraseñaController rcc = (RecuperarContraseñaController) cambiarEscena("RecuperarContraseñaView.fxml",600,400);
+            rcc.setEscenarioPrincipal(this);
         }catch(Exception error){
             System.out.println("Ocurrio un error");
             error.printStackTrace();

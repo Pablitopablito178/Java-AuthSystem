@@ -35,6 +35,18 @@ public class Persona {
     public String getApellidos(){
         return apellidos;
     }
+    
+    public void setApellidos(String apellidos){
+        this.apellidos = apellidos;
+    }
+    
+    public String getTelefono(){
+        return telefono;
+    }
+    
+    public void setTelefono(String telefono){
+        this.telefono = telefono;
+    }
 
     @Override
     public String toString() {
