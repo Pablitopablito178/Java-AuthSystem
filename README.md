@@ -1,0 +1,1 @@
+Lo que agregué al proyecto fue una vista en donde el usuario por x o y motivo haya olvidado su contraseña, puedo volver a recuperarla por medio de un código que se genera automanticamente y que sea aleatorio, creando un nuevo controlador para la nueva vista
